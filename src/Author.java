@@ -1,4 +1,9 @@
 public class Author {
+    @Override
+    public String toString() {
+        return (authorName + " " + authorSurname);
+    }
+
     private final String authorName;
     private final String authorSurname;
 
