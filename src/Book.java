@@ -21,12 +21,12 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return bookName.equals(book.bookName) && author.equals(book.author);
+        return publishYear == book.publishYear && bookName.equals(book.bookName) && author.equals(book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(bookName, author);
+        return Objects.hash(bookName, author, publishYear);
     }
 
     public String getBookName() {
