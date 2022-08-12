@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Library {
     ////Сложный уровень
@@ -18,7 +19,7 @@ public class Library {
     //        //Корректно перенесены методы, модификатор static удален.
     //        //Объявлены новые методы.
     //        //Методы корректно справляются со своей задачей.
-    private final Book[] library;
+    private Book[] library;
 
     public Library(Book[] bookLibs, int libSize) {
         if (bookLibs.length>libSize) {
@@ -27,15 +28,19 @@ public class Library {
         library = Arrays.copyOf(bookLibs, libSize);
     }
 
-    public Book[] addBookToBooksLib(Book[] libs, Book book) {
-        Book[] bookLibResized = Arrays.copyOf(libs, libs.length + 1);
-        bookLibResized[bookLibResized.length - 1] = book;
-        return bookLibResized;
+    public Book[] addBookToBooksLib(Book book) {
+        for (int i = 0; ; i++) {
+            if (Objects.isNull(library[i])) {
+                library[i] = book;
+                break;
+            }
+        }
+        return library;
     }
 
     public void printLibrary(Book[] library) {
         for (int i = 0; i < library.length; i++) {
-            System.out.println(library[i].getAuthor().getAuthorSurname() + " " + library[i].getAuthor().getAuthorName() + ": " + library[i].getBookName() + ": " + library[i].getPublishYear());
+            System.out.println(library[i]);
         }
     }
 
@@ -43,7 +48,7 @@ public class Library {
         for (int i = 0; i < library.length; i++) {
             Book book = library[i];
             if (book.getBookName().equals(bookName)) {
-                System.out.println(book.getBookName() + " by " + book.getAuthor() + " was published in " + book.getPublishYear());
+                System.out.println(book);
                 return;
             }
         }

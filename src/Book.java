@@ -1,4 +1,5 @@
 public class Book {
+
     private final String bookName;
     private final Author author;
     private int publishYear;
@@ -8,7 +9,10 @@ public class Book {
         this.publishYear = publishYear;
         this.author = author;
     }
-
+    @Override
+    public String toString() {
+        return (bookName + " by " + author + " was published in " + publishYear );
+    }
     public String getBookName() {
         return bookName;
     }

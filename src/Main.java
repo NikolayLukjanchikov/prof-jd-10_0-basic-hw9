@@ -51,30 +51,13 @@ public class Main {
         Book secondBook = new Book("Вторая книга", petrPetrov, 1998);
         firstBook.setPublishYear(2005);
         Book[] booksLib = {firstBook, secondBook};
-
-        // средний уровень
-        Book thirdBook = new Book("Третья книга", sidrSidorov, 1980);
-        booksLib = (addBookToBooksLib(booksLib, thirdBook));
-        printLibrary(booksLib);
-
-        //сложный уровень
         Library newLibrary = new Library(booksLib, 10);
-        newLibrary.printBookByName("Третья книга");
+        Book thirdBook = new Book("Третья книга", sidrSidorov, 1980);
+
+        booksLib = (newLibrary.addBookToBooksLib(thirdBook));
+        newLibrary.printLibrary(booksLib);
+        newLibrary.printBookByName("Вторая книга");
         newLibrary.changePublishYear("Третья книга", 2222);
         newLibrary.printBookByName("Третья книга");
     }
-
-    public static Book[] addBookToBooksLib(Book[] libs, Book book) {
-        Book[] bookLibResized = Arrays.copyOf(libs, libs.length + 1);
-        bookLibResized[bookLibResized.length - 1] = book;
-        return bookLibResized;
-    }
-
-    public static void printLibrary(Book[] library) {
-        for (int i = 0; i < library.length; i++) {
-            System.out.println(library[i].getAuthor().getAuthorSurname() + " " + library[i].getAuthor().getAuthorName() + ": " + library[i].getBookName() + ": " + library[i].getPublishYear());
-        }
-
-    }
-
 }
